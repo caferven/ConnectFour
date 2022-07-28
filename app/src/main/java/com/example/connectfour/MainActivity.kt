@@ -17,5 +17,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, InfoActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnStart.setOnClickListener {
+            val intent = Intent(this, ConnectFourActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
