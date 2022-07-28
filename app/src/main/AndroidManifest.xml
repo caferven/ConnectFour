@@ -27,7 +27,7 @@
             android:name=".InfoActivity"
             android:theme="@style/Theme.ConnectFour.NoActionBar"/>
         <activity
-            android:name=".ConnectFourActivity"
+            android:name=".NewGameActivity"
             android:theme="@style/Theme.ConnectFour.NoActionBar"/>
     </application>
 

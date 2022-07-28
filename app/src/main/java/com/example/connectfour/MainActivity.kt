@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnStart.setOnClickListener {
-            val intent = Intent(this, ConnectFourActivity::class.java)
+        binding.btnNewGame.setOnClickListener {
+            val intent = Intent(this, NewGameActivity::class.java)
             startActivity(intent)
         }
     }
