@@ -2,4 +2,7 @@
     <string name="app_name">Connect Four</string>
     <string name="start">Start</string>
     <string name="info">Info</string>
+    <string name="app_info">App info</string>
+    <string name="other_info">Other Info</string>
+    <string name="github_link">Github Link</string>
 </resources>
