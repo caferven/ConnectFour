@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewGameActivity">
+    tools:context=".StatsActivity">
 
     <ImageView
-        android:id="@+id/imgConnectFourLogo"
-        android:layout_width="413dp"
-        android:layout_height="122dp"
+        android:id="@+id/imgStatsLogo"
+        android:layout_width="414dp"
+        android:layout_height="118dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/connect_4_logo_light" />
+        app:srcCompat="@drawable/stats_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

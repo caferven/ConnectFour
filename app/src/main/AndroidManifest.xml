@@ -29,6 +29,9 @@
         <activity
             android:name=".NewGameActivity"
             android:theme="@style/Theme.ConnectFour.NoActionBar"/>
+        <activity
+            android:name=".StatsActivity"
+            android:theme="@style/Theme.ConnectFour.NoActionBar"/>
     </application>
 
 </manifest>

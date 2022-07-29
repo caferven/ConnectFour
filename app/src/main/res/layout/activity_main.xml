@@ -7,14 +7,14 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnInfo"
+        android:id="@+id/btnStats"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
         android:backgroundTint="#84A9F3"
-        android:text="@string/info"
+        android:text="@string/stats"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNewGame" />
@@ -29,10 +29,10 @@
         android:text="@string/new_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgConnectFour" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgConnectFour"
         android:layout_width="365dp"
         android:layout_height="339dp"
         android:layout_marginStart="16dp"
@@ -42,4 +42,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/connect4" />
+
+    <ImageButton
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_info_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
