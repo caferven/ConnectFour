@@ -7,11 +7,420 @@
     tools:context=".NewGameActivity">
 
     <ImageView
-        android:id="@+id/imgConnectFourLogo"
+        android:id="@+id/imgConnectFour"
         android:layout_width="413dp"
-        android:layout_height="122dp"
+        android:layout_height="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/connect_4_logo_light" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="360dp"
+        android:layout_height="310dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/border"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/redPiece">
+
+        <LinearLayout
+            android:id="@+id/column1"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece16"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece15"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece14"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece13"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece12"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece11"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/column2"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece26"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece25"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece24"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece23"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece22"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece21"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/column3"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece36"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece35"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece34"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece33"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece32"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece31"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/column4"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece46"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece45"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece44"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece43"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece42"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece41"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/column5"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece56"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece55"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece54"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece53"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece52"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece51"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/column6"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece66"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece65"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece64"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece63"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece62"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece61"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/column7"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/piece76"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece75"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece74"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece73"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece72"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+
+            <ImageView
+                android:id="@+id/piece71"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/piece" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/player1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/player_1"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgConnectFour" />
+
+    <TextView
+        android:id="@+id/player2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="96dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/player_2"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgConnectFour" />
+
+    <ImageView
+        android:id="@+id/redPiece"
+        android:layout_width="66dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="96dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1"
+        app:srcCompat="@drawable/red_piece" />
+
+    <ImageView
+        android:id="@+id/purplePiece"
+        android:layout_width="66dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player2"
+        app:srcCompat="@drawable/purple_piece" />
+
+    <TextView
+        android:id="@+id/redWins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="0"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/redPiece"
+        app:layout_constraintEnd_toEndOf="@+id/redPiece"
+        app:layout_constraintStart_toStartOf="@+id/redPiece"
+        app:layout_constraintTop_toBottomOf="@+id/player1" />
+
+    <TextView
+        android:id="@+id/purpleWins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:hint="0"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/purplePiece"
+        app:layout_constraintEnd_toEndOf="@+id/purplePiece"
+        app:layout_constraintStart_toStartOf="@+id/purplePiece"
+        app:layout_constraintTop_toBottomOf="@+id/player2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/reload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:backgroundTint="@color/purple_light"
+        android:text="@string/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
