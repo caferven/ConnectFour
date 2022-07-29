@@ -26,12 +26,15 @@
         </activity>
         <activity
             android:name=".InfoActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.ConnectFour.NoActionBar"/>
         <activity
             android:name=".NewGameActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.ConnectFour.NoActionBar"/>
         <activity
             android:name=".StatsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.ConnectFour.NoActionBar"/>
     </application>
 
