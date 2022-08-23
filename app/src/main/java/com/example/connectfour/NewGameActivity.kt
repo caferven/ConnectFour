@@ -1,17 +1,14 @@
 package com.example.connectfour
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
-import androidx.core.view.get
-import androidx.core.view.size
 import com.example.connectfour.databinding.ActivityNewGameBinding
 
 class NewGameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewGameBinding
+    private var gameFinished = false
     private var turn = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,20 +23,32 @@ class NewGameActivity : AppCompatActivity() {
         binding.column5.setOnClickListener { drawPiece(binding.column5) }
         binding.column6.setOnClickListener { drawPiece(binding.column6) }
         binding.column7.setOnClickListener { drawPiece(binding.column7) }
+
+        binding.btnReload.setOnClickListener { cleanBoard() }
+        binding.btnReset.setOnClickListener { resetGame() }
+    }
+
+    private fun resetGame() {
+        cleanBoard()
+    }
+
+    private fun cleanBoard() {
+        TODO("Not yet implemented")
     }
 
     private fun drawPiece(column: LinearLayout) {
         val pieceCount = column.childCount
         var v: View?
-        for (i in 0 until pieceCount) {
+        for (i in pieceCount-1 downTo 0) {
             v = column.getChildAt(i)
             if (v.background != null) {
                 continue
             } else {
                 when(turn) {
-                    0 -> v.setBackgroundColor(Color.RED)
-                    1 -> v.setBackgroundColor(Color.YELLOW)
+                    0 -> v.setBackgroundResource(R.color.red_piece)
+                    1 -> v.setBackgroundResource(R.color.purple_piece)
                 }
+                break
             }
         }
         changeTurn()
