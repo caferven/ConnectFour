@@ -14,11 +14,14 @@ class NewGameActivity : AppCompatActivity() {
     private var board: Array<Array<ImageView>> = arrayOf()
     private var redWins = false
     private var purpleWins = false
-    private var redNumWins = 0
-    private var purpleNumWins = 0
     private var turn = 0
     private var rows = 6
     private lateinit var winner: String
+
+    companion object {
+        var redNumWins = 0
+        var purpleNumWins = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -164,9 +167,12 @@ class NewGameActivity : AppCompatActivity() {
         }
 
         if (gameFinished) {
-            when(turn) {
-                0 -> redWins = true
-                1 -> purpleWins = true
+            if (turn == 0) {
+                redWins = true
+                purpleWins = false
+            } else {
+                redWins = false
+                purpleWins = true
             }
             if (redWins) {
                 redNumWins++
@@ -180,6 +186,7 @@ class NewGameActivity : AppCompatActivity() {
             showWinningMessage(winner)
             clearBoard()
             gameFinished = false
+            changeTurn()
         }
     }
 
