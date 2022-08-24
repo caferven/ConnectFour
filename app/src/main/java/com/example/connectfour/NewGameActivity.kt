@@ -1,34 +1,29 @@
 package com.example.connectfour
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.connectfour.databinding.ActivityNewGameBinding
 
 class NewGameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewGameBinding
     private var gameFinished = false
-    private var columns: MutableList<LinearLayout> = mutableListOf()
+    private var columns: Array<LinearLayout> = arrayOf()
+    private var board: Array<Array<ImageView>> = arrayOf()
     private var redWins = false
-    private var redNumWins = 0
     private var purpleWins = false
+    private var redNumWins = 0
     private var purpleNumWins = 0
     private var turn = 0
+    private var rows = 6
+    private lateinit var winner: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.column1.setOnClickListener { drawPiece(binding.column1) }
-        binding.column2.setOnClickListener { drawPiece(binding.column2) }
-        binding.column3.setOnClickListener { drawPiece(binding.column3) }
-        binding.column4.setOnClickListener { drawPiece(binding.column4) }
-        binding.column5.setOnClickListener { drawPiece(binding.column5) }
-        binding.column6.setOnClickListener { drawPiece(binding.column6) }
-        binding.column7.setOnClickListener { drawPiece(binding.column7) }
 
         binding.btnReload.setOnClickListener { clearBoard() }
         binding.btnReset.setOnClickListener { resetGame() }
@@ -36,31 +31,48 @@ class NewGameActivity : AppCompatActivity() {
         binding.redWins.setText(redNumWins.toString())
         binding.purpleWins.setText(purpleNumWins.toString())
 
-        val columnCount = binding.board.childCount
-        var col: View?
-        for (i in 0 until columnCount) {
-            col = binding.board.getChildAt(i)
-            columns.add(col as LinearLayout)
+        setBoard()
+        setColumns()
+    }
+
+    private fun setBoard() {
+        board = arrayOf(
+            arrayOf(binding.piece11, binding.piece12, binding.piece13, binding.piece14, binding.piece15, binding.piece16),
+            arrayOf(binding.piece21, binding.piece22, binding.piece23, binding.piece24, binding.piece25, binding.piece26),
+            arrayOf(binding.piece31, binding.piece32, binding.piece33, binding.piece34, binding.piece35, binding.piece36),
+            arrayOf(binding.piece41, binding.piece42, binding.piece43, binding.piece44, binding.piece45, binding.piece46),
+            arrayOf(binding.piece51, binding.piece52, binding.piece53, binding.piece54, binding.piece55, binding.piece56),
+            arrayOf(binding.piece61, binding.piece62, binding.piece63, binding.piece64, binding.piece65, binding.piece66),
+            arrayOf(binding.piece71, binding.piece72, binding.piece73, binding.piece74, binding.piece75, binding.piece76)
+        )
+    }
+
+    private fun setColumns() {
+        columns = arrayOf(
+            binding.column1, binding.column2, binding.column3,
+            binding.column4, binding.column5, binding.column6, binding.column7
+        )
+        for (i in 0..columns.size-1) {
+            columns[i].setOnClickListener {
+                for (j in 0..5) {
+                    if (board[i][j].background == null) {
+                        drawPiece(i,j)
+                        break
+                    } else {
+                        continue
+                    }
+                }
+            }
         }
     }
 
-    private fun drawPiece(column: LinearLayout) {
-        val pieceCount = column.childCount
-        var piece: View?
-        for (i in pieceCount-1 downTo 0) {
-            piece = column.getChildAt(i)
-            if (piece.background != null) {
-                continue
-            } else {
-                when(turn) {
-                    0 -> piece.setBackgroundResource(R.color.red_piece)
-                    1 -> piece.setBackgroundResource(R.color.purple_piece)
-                }
-                break
-            }
+    private fun drawPiece(x: Int, y: Int) {
+        when(turn) {
+            0 -> board[x][y].setBackgroundResource(R.color.red_piece)
+            1 -> board[x][y].setBackgroundResource(R.color.purple_piece)
         }
+        checkFinished(x, y)
         changeTurn()
-        //checkFinished()
     }
 
     private fun changeTurn() {
@@ -70,45 +82,124 @@ class NewGameActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkFinished() {
+    private fun checkFinished(x: Int, y: Int) {
+        //downwards
+        if (board[x][y].background != null
+            && y-3 >= 0
+            && board[x][y].background.constantState == board[x][y-1].background?.constantState
+            && board[x][y].background.constantState == board[x][y-2].background?.constantState
+            && board[x][y].background.constantState == board[x][y-3].background?.constantState) {
+
+            gameFinished = true
+        } else
+
         //upwards
-        for (column in columns) {
-            val pieceCount = column.childCount
-            var piece: View?
-            for (i in 0 until pieceCount) {
-                piece = column.getChildAt(i)
-                if (piece.background != null
-                    && piece.background == column.getChildAt(i+1).background
-                    && piece.background == column.getChildAt(i+2).background
-                    && piece.background == column.getChildAt(i+3).background) {
-                    val winnerIntColor = (piece.background as ColorDrawable).color
-                    val winnerColor = Integer.toHexString(winnerIntColor)
-                    when(winnerColor) {
-                        "FFFD636E" -> redWins
-                        "FF6C7FD8" -> purpleWins
-                    }
-                    gameFinished = true
-                    if (redWins) {
-                        redNumWins++
-                        binding.redWins.setText((redNumWins).toString())
-                    } else {
-                        purpleNumWins++
-                        binding.purpleWins.setText((purpleNumWins).toString())
-                    }
-                }
+        if (board[x][y].background != null
+            && y+3 < rows
+            && board[x][y].background.constantState == board[x][y+1].background?.constantState
+            && board[x][y].background.constantState == board[x][y+2].background?.constantState
+            && board[x][y].background.constantState == board[x][y+3].background?.constantState) {
+
+            gameFinished = true
+        } else
+
+        //left-to-right
+        if (board[x][y].background != null
+            && x+3 < columns.size
+            && board[x][y].background.constantState == board[x+1][y].background?.constantState
+            && board[x][y].background.constantState == board[x+2][y].background?.constantState
+            && board[x][y].background.constantState == board[x+3][y].background?.constantState) {
+
+            gameFinished = true
+        } else
+
+        //right-to-left
+        if (board[x][y].background != null
+            && x-3 >= 0
+            && board[x][y].background.constantState == board[x-1][y].background?.constantState
+            && board[x][y].background.constantState == board[x-2][y].background?.constantState
+            && board[x][y].background.constantState == board[x-3][y].background?.constantState) {
+
+            gameFinished = true
+        } else
+
+        //to-top-right
+        if (board[x][y].background != null
+            && x+3 < columns.size && y+3 < rows
+            && board[x][y].background.constantState == board[x+1][y+1].background?.constantState
+            && board[x][y].background.constantState == board[x+2][y+2].background?.constantState
+            && board[x][y].background.constantState == board[x+3][y+3].background?.constantState) {
+
+            gameFinished = true
+        } else
+
+        //to-top-left
+        if (board[x][y].background != null
+            && x-3 >= 0 && y+3 < rows
+            && board[x][y].background.constantState == board[x-1][y+1].background?.constantState
+            && board[x][y].background.constantState == board[x-2][y+2].background?.constantState
+            && board[x][y].background.constantState == board[x-3][y+3].background?.constantState) {
+
+            gameFinished = true
+        } else
+
+        //to-bottom-right
+        if (board[x][y].background != null
+            && x+3 < columns.size && y-3 >= 0
+            && board[x][y].background.constantState == board[x+1][y-1].background?.constantState
+            && board[x][y].background.constantState == board[x+2][y-2].background?.constantState
+            && board[x][y].background.constantState == board[x+3][y-3].background?.constantState) {
+
+            gameFinished = true
+        } else
+
+        //to-bottom-left
+        if (board[x][y].background != null
+            && x-3 >= 0 && y-3 >= 0
+            && board[x][y].background.constantState == board[x-1][y-1].background?.constantState
+            && board[x][y].background.constantState == board[x-2][y-2].background?.constantState
+            && board[x][y].background.constantState == board[x-3][y-3].background?.constantState) {
+
+            gameFinished = true
+        }
+
+        if (gameFinished) {
+            when(turn) {
+                0 -> redWins = true
+                1 -> purpleWins = true
             }
+            if (redWins) {
+                redNumWins++
+                binding.redWins.setText((redNumWins).toString())
+                winner = "RED WINS"
+            } else {
+                purpleNumWins++
+                binding.purpleWins.setText((purpleNumWins).toString())
+                winner = "PURPLE WINS"
+            }
+            showWinningMessage(winner)
+            clearBoard()
+            gameFinished = false
         }
     }
 
+    private fun showWinningMessage(winner: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(winner)
+                .setPositiveButton(android.R.string.ok, null)
+        val dialog = builder.create()
+        dialog.show()
+    }
+
     private fun clearBoard() {
-        for (column in columns) {
-            val pieceCount = column.childCount
-            var piece: View?
-            for (i in 0 until pieceCount) {
-                piece = column.getChildAt(i)
-                piece.setBackgroundDrawable(null)
+        for (i in 0..columns.size-1) {
+            board.forEach { piece ->
+                piece.forEach {
+                    it.setBackgroundDrawable(null)
+                }
             }
         }
+        turn = 0
     }
 
     private fun resetGame() {
