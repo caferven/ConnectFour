@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imgConnectFour"
-        android:layout_width="413dp"
-        android:layout_height="88dp"
+        android:layout_width="411dp"
+        android:layout_height="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

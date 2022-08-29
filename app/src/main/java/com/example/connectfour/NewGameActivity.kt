@@ -1,6 +1,8 @@
 package com.example.connectfour
 
 import android.os.Bundle
+import android.os.Handler
+import android.view.animation.BounceInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
@@ -12,8 +14,6 @@ class NewGameActivity : AppCompatActivity() {
     private var gameFinished = false
     private var columns: Array<LinearLayout> = arrayOf()
     private var board: Array<Array<ImageView>> = arrayOf()
-    private var redWins = false
-    private var purpleWins = false
     private var turn = 0
     private var rows = 6
     private lateinit var winner: String
@@ -55,9 +55,9 @@ class NewGameActivity : AppCompatActivity() {
             binding.column1, binding.column2, binding.column3,
             binding.column4, binding.column5, binding.column6, binding.column7
         )
-        for (i in 0..columns.size-1) {
+        for (i in columns.indices) {
             columns[i].setOnClickListener {
-                for (j in 0..5) {
+                for (j in 0 until rows) {
                     if (board[i][j].background == null) {
                         drawPiece(i,j)
                         break
@@ -167,46 +167,42 @@ class NewGameActivity : AppCompatActivity() {
         }
 
         if (gameFinished) {
-            if (turn == 0) {
-                redWins = true
-                purpleWins = false
-            } else {
-                redWins = false
-                purpleWins = true
-            }
-            if (redWins) {
-                redNumWins++
-                binding.redWins.setText((redNumWins).toString())
-                winner = "RED WINS"
-            } else {
-                purpleNumWins++
-                binding.purpleWins.setText((purpleNumWins).toString())
-                winner = "PURPLE WINS"
+            when (turn) {
+                0 -> {
+                    redNumWins++
+                    binding.redWins.setText((redNumWins).toString())
+                    winner = "RED WINS"
+                }
+                1 -> {
+                    purpleNumWins++
+                    binding.purpleWins.setText((purpleNumWins).toString())
+                    winner = "PURPLE WINS"
+                }
             }
             showWinningMessage(winner)
-            clearBoard()
-            gameFinished = false
+            Handler().postDelayed({
+                clearBoard()
+            }, 100)
             changeTurn()
+            gameFinished = false
         }
     }
 
     private fun showWinningMessage(winner: String) {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage(winner)
-                .setPositiveButton(android.R.string.ok, null)
+        builder.setTitle(winner)
+            .setPositiveButton(android.R.string.ok, null)
         val dialog = builder.create()
         dialog.show()
     }
 
     private fun clearBoard() {
-        for (i in 0..columns.size-1) {
-            board.forEach { piece ->
-                piece.forEach {
-                    it.setBackgroundDrawable(null)
-                }
+        for (column in board) {
+            for (piece in column) {
+                piece.setBackgroundDrawable(null)
             }
         }
-        turn = 0
+        changeTurn()
     }
 
     private fun resetGame() {
