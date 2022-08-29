@@ -158,11 +158,11 @@ class NewGameActivity : AppCompatActivity() {
             when (turn) {
                 0 -> {
                     redNumWins++
-                    binding.redWins.setText((redNumWins).toString())
+                    binding.redWins.text = (redNumWins).toString()
                 }
                 1 -> {
                     purpleNumWins++
-                    binding.purpleWins.setText((purpleNumWins).toString())
+                    binding.purpleWins.text = (purpleNumWins).toString()
                 }
             }
             showWinningMessage()
@@ -184,6 +184,9 @@ class NewGameActivity : AppCompatActivity() {
 //            1 -> dialogView.imgWinner.setImageResource(R.drawable.purple_wins)
         }
         dialog.show()
+        Handler().postDelayed({
+            dialog.dismiss()
+        }, 2000)
     }
 
     private fun clearBoard() {
@@ -198,8 +201,8 @@ class NewGameActivity : AppCompatActivity() {
     private fun resetGame() {
         redNumWins = 0
         purpleNumWins = 0
-        binding.redWins.setText((redNumWins).toString())
-        binding.purpleWins.setText((purpleNumWins).toString())
+        binding.redWins.text = (redNumWins).toString()
+        binding.purpleWins.text = (purpleNumWins).toString()
         clearBoard()
     }
 }
