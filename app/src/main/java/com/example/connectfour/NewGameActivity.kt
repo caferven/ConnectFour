@@ -2,7 +2,6 @@ package com.example.connectfour
 
 import android.os.Bundle
 import android.os.Handler
-import android.view.animation.BounceInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
@@ -16,7 +15,6 @@ class NewGameActivity : AppCompatActivity() {
     private var board: Array<Array<ImageView>> = arrayOf()
     private var turn = 0
     private var rows = 6
-    private lateinit var winner: String
 
     companion object {
         var redNumWins = 0
@@ -96,16 +94,6 @@ class NewGameActivity : AppCompatActivity() {
             gameFinished = true
         } else
 
-        //upwards
-        if (board[x][y].background != null
-            && y+3 < rows
-            && board[x][y].background.constantState == board[x][y+1].background?.constantState
-            && board[x][y].background.constantState == board[x][y+2].background?.constantState
-            && board[x][y].background.constantState == board[x][y+3].background?.constantState) {
-
-            gameFinished = true
-        } else
-
         //left-to-right
         if (board[x][y].background != null
             && x+3 < columns.size
@@ -171,15 +159,13 @@ class NewGameActivity : AppCompatActivity() {
                 0 -> {
                     redNumWins++
                     binding.redWins.setText((redNumWins).toString())
-                    winner = "RED WINS"
                 }
                 1 -> {
                     purpleNumWins++
                     binding.purpleWins.setText((purpleNumWins).toString())
-                    winner = "PURPLE WINS"
                 }
             }
-            showWinningMessage(winner)
+            showWinningMessage()
             Handler().postDelayed({
                 clearBoard()
             }, 100)
@@ -188,11 +174,15 @@ class NewGameActivity : AppCompatActivity() {
         }
     }
 
-    private fun showWinningMessage(winner: String) {
+    private fun showWinningMessage() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_winner,null)
         val builder = AlertDialog.Builder(this)
-        builder.setTitle(winner)
-            .setPositiveButton(android.R.string.ok, null)
+        builder.setView(dialogView)
         val dialog = builder.create()
+        when (turn) {
+//            0 -> dialogView.imgWinner.setImageResource(R.drawable.red_wins)
+//            1 -> dialogView.imgWinner.setImageResource(R.drawable.purple_wins)
+        }
         dialog.show()
     }
 
