@@ -2,11 +2,13 @@ package com.example.connectfour
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.connectfour.databinding.ActivityNewGameBinding
+import com.example.connectfour.databinding.DialogWinnerBinding
 
 class NewGameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewGameBinding
@@ -175,13 +177,13 @@ class NewGameActivity : AppCompatActivity() {
     }
 
     private fun showWinningMessage() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_winner,null)
+        val dialogView = DialogWinnerBinding.inflate(LayoutInflater.from(this), null, false)
         val builder = AlertDialog.Builder(this)
-        builder.setView(dialogView)
+        builder.setView(dialogView.root)
         val dialog = builder.create()
         when (turn) {
-//            0 -> dialogView.imgWinner.setImageResource(R.drawable.red_wins)
-//            1 -> dialogView.imgWinner.setImageResource(R.drawable.purple_wins)
+            0 -> dialogView.imgWinner.setImageResource(R.drawable.red_wins)
+            1 -> dialogView.imgWinner.setImageResource(R.drawable.purple_wins)
         }
         dialog.show()
         Handler().postDelayed({
