@@ -14,7 +14,7 @@ class StatsActivity: AppCompatActivity() {
         binding = ActivityStatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.redGameWins.setText("Wins: $redNumWins")
-        binding.purpleGameWins.setText("Wins: $purpleNumWins")
+        binding.redGameWins.text = "Wins: $redNumWins"
+        binding.purpleGameWins.text = "Wins: $purpleNumWins"
     }
 }

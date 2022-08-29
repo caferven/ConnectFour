@@ -14,7 +14,7 @@ class NewGameActivity : AppCompatActivity() {
     private var columns: Array<LinearLayout> = arrayOf()
     private var board: Array<Array<ImageView>> = arrayOf()
     private var turn = 0
-    private var rows = 6
+    private val rows = 6
 
     companion object {
         var redNumWins = 0

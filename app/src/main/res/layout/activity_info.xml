@@ -71,4 +71,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/info_logo" />
 
+    <TextView
+        android:id="@+id/creditsInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/credits_text"
+        android:textColorLink="@color/purple_piece"
+        android:textColorHighlight="@color/purple_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChallenge" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

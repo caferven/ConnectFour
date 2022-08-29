@@ -3,6 +3,7 @@ package com.example.connectfour
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import com.example.connectfour.databinding.ActivityInfoBinding
 
@@ -18,9 +19,10 @@ class InfoActivity : AppCompatActivity(){
         val personalGithubUri = "https://github.com/caferven"
         val challengeGithubUri = "https://github.com/mouredev/Monthly-App-Challenge-2022"
 
-        binding.appInfo.setText("First monthly app created by caferven")
-        binding.otherInfo.setText("Challenge by Brais Moure (MoureDev)")
-        binding.btnChallenge.setText("Take the challenge")
+        binding.appInfo.text = "First monthly app created by caferven"
+        binding.otherInfo.text = "Challenge by Brais Moure (MoureDev)"
+        binding.btnChallenge.text = "Take the challenge"
+        binding.creditsInfo.movementMethod = LinkMovementMethod.getInstance()
 
         binding.btnGithub.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(personalGithubUri)))
