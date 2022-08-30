@@ -14,4 +14,5 @@
     <string name="purple_player">Purple player</string>
     <string name="wins">Wins</string>
     <string name="credits_text">Board game icons created by \<a href="https://www.flaticon.com/free-icons/board-game">Freepik - Flaticon</a></string>
+    <string name="clear">Clear</string>
 </resources>

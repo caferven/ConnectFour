@@ -89,75 +89,7 @@ class NewGameActivity : AppCompatActivity() {
     }
 
     private fun checkFinished(x: Int, y: Int) {
-        //downwards
-        if (board[x][y].background != null
-            && y-3 >= 0
-            && board[x][y].background.constantState == board[x][y-1].background?.constantState
-            && board[x][y].background.constantState == board[x][y-2].background?.constantState
-            && board[x][y].background.constantState == board[x][y-3].background?.constantState) {
-
-            gameFinished = true
-        } else
-
-        //left-to-right
-        if (board[x][y].background != null
-            && x+3 < columns.size
-            && board[x][y].background.constantState == board[x+1][y].background?.constantState
-            && board[x][y].background.constantState == board[x+2][y].background?.constantState
-            && board[x][y].background.constantState == board[x+3][y].background?.constantState) {
-
-            gameFinished = true
-        } else
-
-        //right-to-left
-        if (board[x][y].background != null
-            && x-3 >= 0
-            && board[x][y].background.constantState == board[x-1][y].background?.constantState
-            && board[x][y].background.constantState == board[x-2][y].background?.constantState
-            && board[x][y].background.constantState == board[x-3][y].background?.constantState) {
-
-            gameFinished = true
-        } else
-
-        //to-top-right
-        if (board[x][y].background != null
-            && x+3 < columns.size && y+3 < rows
-            && board[x][y].background.constantState == board[x+1][y+1].background?.constantState
-            && board[x][y].background.constantState == board[x+2][y+2].background?.constantState
-            && board[x][y].background.constantState == board[x+3][y+3].background?.constantState) {
-
-            gameFinished = true
-        } else
-
-        //to-top-left
-        if (board[x][y].background != null
-            && x-3 >= 0 && y+3 < rows
-            && board[x][y].background.constantState == board[x-1][y+1].background?.constantState
-            && board[x][y].background.constantState == board[x-2][y+2].background?.constantState
-            && board[x][y].background.constantState == board[x-3][y+3].background?.constantState) {
-
-            gameFinished = true
-        } else
-
-        //to-bottom-right
-        if (board[x][y].background != null
-            && x+3 < columns.size && y-3 >= 0
-            && board[x][y].background.constantState == board[x+1][y-1].background?.constantState
-            && board[x][y].background.constantState == board[x+2][y-2].background?.constantState
-            && board[x][y].background.constantState == board[x+3][y-3].background?.constantState) {
-
-            gameFinished = true
-        } else
-
-        //to-bottom-left
-        if (board[x][y].background != null
-            && x-3 >= 0 && y-3 >= 0
-            && board[x][y].background.constantState == board[x-1][y-1].background?.constantState
-            && board[x][y].background.constantState == board[x-2][y-2].background?.constantState
-            && board[x][y].background.constantState == board[x-3][y-3].background?.constantState) {
-
-            gameFinished = true
-        }
+         if (checkDownwards(x,y) || checkHorizontal(x,y) || checkDiagonal(x,y)) gameFinished = true
 
         if (gameFinished) {
             when (turn) {
@@ -179,6 +111,95 @@ class NewGameActivity : AppCompatActivity() {
             changeTurn()
             gameFinished = false
         }
+    }
+
+    private fun checkDownwards(x: Int, y: Int): Boolean {
+        if (y-3 >= 0
+            && board[x][y].background.constantState == board[x][y-1].background?.constantState
+            && board[x][y].background.constantState == board[x][y-2].background?.constantState
+            && board[x][y].background.constantState == board[x][y-3].background?.constantState) {
+            return true
+        }
+        return false
+    }
+
+    private fun checkHorizontal(x: Int, y: Int): Boolean {
+        var painted = 0
+
+        //left-to-right
+        if (x+1 < columns.size && board[x][y].background.constantState == board[x+1][y].background?.constantState) {
+            painted++
+            if (x+2 < columns.size && board[x][y].background.constantState == board[x+2][y].background?.constantState) {
+                painted++
+                if (x+3 < columns.size && board[x][y].background.constantState == board[x+3][y].background?.constantState) {
+                    painted++
+                }
+            }
+        }
+        //right-to-left
+        if (x-1 >= 0 && board[x][y].background.constantState == board[x-1][y].background?.constantState) {
+            painted++
+            if (x-2 >= 0 && board[x][y].background.constantState == board[x-2][y].background?.constantState) {
+                painted++
+                if (x-3 >= 0 && board[x][y].background.constantState == board[x-3][y].background?.constantState) {
+                    painted++
+                }
+            }
+        }
+        if (painted > 2) {
+            return true
+        }
+        return false
+    }
+
+    private fun checkDiagonal(x: Int, y: Int): Boolean {
+        var paintedTop = 0
+        var paintedBottom = 0
+
+        //to-top-right
+        if (x+1 < columns.size && y+1 < rows && board[x][y].background.constantState == board[x+1][y+1].background?.constantState) {
+            paintedTop++
+            if (x+2 < columns.size && y+2 < rows && board[x][y].background.constantState == board[x+2][y+2].background?.constantState) {
+                paintedTop++
+                if (x+3 < columns.size && y+3 < rows && board[x][y].background.constantState == board[x+3][y+3].background?.constantState) {
+                    paintedTop++
+                }
+            }
+        }
+        //to-top-left
+        if (x-1 >= 0 && y+1 < rows && board[x][y].background.constantState == board[x-1][y+1].background?.constantState) {
+            paintedTop++
+            if (x-2 >= 0 && y+2 < rows && board[x][y].background.constantState == board[x-2][y+2].background?.constantState) {
+                paintedTop++
+                if (x-3 >= 0 && y+3 < rows && board[x][y].background.constantState == board[x-3][y+3].background?.constantState) {
+                    paintedTop++
+                }
+            }
+        }
+        //to-bottom-right
+        if (x+1 < columns.size && y-1 >= 0 && board[x][y].background.constantState == board[x+1][y-1].background?.constantState) {
+            paintedBottom++
+            if (x+2 < columns.size && y-2 >= 0 && board[x][y].background.constantState == board[x+2][y-2].background?.constantState) {
+                paintedBottom++
+                if (x+3 < columns.size && y-3 >= 0 && board[x][y].background.constantState == board[x+3][y-3].background?.constantState) {
+                    paintedBottom++
+                }
+            }
+        }
+        //to-bottom-left
+        if (x-1 >= 0 && y-1 >= 0 && board[x][y].background.constantState == board[x-1][y-1].background?.constantState) {
+            paintedBottom++
+            if (x-2 >= 0 && y-2 >= 0 && board[x][y].background.constantState == board[x-2][y-2].background?.constantState) {
+                paintedBottom++
+                if (x-3 >= 0 && y-3 >= 0 && board[x][y].background.constantState == board[x-3][y-3].background?.constantState) {
+                    paintedBottom++
+                }
+            }
+        }
+        if (paintedTop > 2 || paintedBottom > 2) {
+            return true
+        }
+        return false
     }
 
     private fun showWinningMessage() {
