@@ -2,7 +2,7 @@
 
 This is an implementation of the classic game Connect Four in Android (Kotlin).
 
-Here's the app: [ConnectFour.apk](https://github.com/caferven/ConnectFour/blob/master/ConnectFour.apk)
+Here's the app: [Connect Four](https://github.com/caferven/ConnectFour/raw/master/ConnectFour.apk)
 
 <img src="https://user-images.githubusercontent.com/50365659/187551509-18d51f4b-2f3e-482b-a31b-6eb791bca8ef.png" alt="Main" width="200"/>
 
