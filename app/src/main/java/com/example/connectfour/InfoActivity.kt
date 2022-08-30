@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.connectfour.databinding.ActivityInfoBinding
 
 class InfoActivity : AppCompatActivity(){
@@ -15,6 +16,8 @@ class InfoActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         val personalGithubUri = "https://github.com/caferven"
         val challengeGithubUri = "https://github.com/mouredev/Monthly-App-Challenge-2022"

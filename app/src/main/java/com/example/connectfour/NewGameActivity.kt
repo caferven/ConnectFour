@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.connectfour.databinding.ActivityNewGameBinding
 import com.example.connectfour.databinding.DialogWinnerBinding
 
@@ -27,6 +28,8 @@ class NewGameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         binding.btnReload.setOnClickListener { clearBoard() }
         binding.btnReset.setOnClickListener { resetGame() }
