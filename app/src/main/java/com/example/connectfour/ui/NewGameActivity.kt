@@ -1,4 +1,4 @@
-package com.example.connectfour
+package com.example.connectfour.ui
 
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +8,9 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.connectfour.R
+import com.example.connectfour.ui.StatsActivity.Companion.purpleStatsWins
+import com.example.connectfour.ui.StatsActivity.Companion.redStatsWins
 import com.example.connectfour.databinding.ActivityNewGameBinding
 import com.example.connectfour.databinding.DialogWinnerBinding
 
@@ -18,11 +21,8 @@ class NewGameActivity : AppCompatActivity() {
     private var board: Array<Array<ImageView>> = arrayOf()
     private var turn = 0
     private val rows = 6
-
-    companion object {
-        var redNumWins = 0
-        var purpleNumWins = 0
-    }
+    private var redNumWins = 0
+    private var purpleNumWins = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -163,10 +163,12 @@ class NewGameActivity : AppCompatActivity() {
             when (turn) {
                 0 -> {
                     redNumWins++
+                    redStatsWins++
                     binding.redWins.text = (redNumWins).toString()
                 }
                 1 -> {
                     purpleNumWins++
+                    purpleStatsWins++
                     binding.purpleWins.text = (purpleNumWins).toString()
                 }
             }

@@ -1,14 +1,17 @@
-package com.example.connectfour
+package com.example.connectfour.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.connectfour.NewGameActivity.Companion.purpleNumWins
-import com.example.connectfour.NewGameActivity.Companion.redNumWins
 import com.example.connectfour.databinding.ActivityStatsBinding
 
 class StatsActivity: AppCompatActivity() {
     private lateinit var binding: ActivityStatsBinding
+
+    companion object {
+        var redStatsWins = 0
+        var purpleStatsWins = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +20,7 @@ class StatsActivity: AppCompatActivity() {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        binding.redGameWins.text = "Wins: $redNumWins"
-        binding.purpleGameWins.text = "Wins: $purpleNumWins"
+        binding.redGameWins.text = "Wins: $redStatsWins"
+        binding.purpleGameWins.text = "Wins: $purpleStatsWins"
     }
 }

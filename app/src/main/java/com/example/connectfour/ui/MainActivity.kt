@@ -1,4 +1,4 @@
-package com.example.connectfour
+package com.example.connectfour.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
