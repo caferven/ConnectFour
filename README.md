@@ -4,9 +4,9 @@ This is an implementation of the classic game Connect Four in Android (Kotlin).
 
 ![Screenshot from 2022-08-30 23-59-36](https://user-images.githubusercontent.com/50365659/187551509-18d51f4b-2f3e-482b-a31b-6eb791bca8ef.png)
 
-There are two colors, red and purple, fighting each other. There is no CPU, just two real players. The reload button clears the board and the reset button clears the board and resets each player counter.
+There are two colors, red and purple, fighting each other. There is no CPU, just two real players. The clear button just clears the board and the reset button clears the board and resets each player counter.
 
-![Screenshot from 2022-08-30 23-59-41](https://user-images.githubusercontent.com/50365659/187551518-8f0b9fc7-9613-4c01-b470-82cd432a1450.png)
+![Screenshot from 2022-08-31 00-07-58](https://user-images.githubusercontent.com/50365659/187552395-a01d18e6-4f75-4bd3-88a1-99923e711621.png)
 
 Apart from the principal activity, the game itself, there is a stats activity in which we can see the current session stats (coming soon: data persistance).
 
