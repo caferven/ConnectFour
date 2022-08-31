@@ -126,26 +126,21 @@ class NewGameActivity : AppCompatActivity() {
     private fun checkHorizontal(x: Int, y: Int): Boolean {
         var painted = 0
 
-        //left-to-right
-        if (x+1 < columns.size && board[x][y].background.constantState == board[x+1][y].background?.constantState) {
-            painted++
-            if (x+2 < columns.size && board[x][y].background.constantState == board[x+2][y].background?.constantState) {
+        for (i in 1..3) {
+            if (x+i < columns.size && board[x][y].background.constantState == board[x+i][y].background?.constantState) {
                 painted++
-                if (x+3 < columns.size && board[x][y].background.constantState == board[x+3][y].background?.constantState) {
-                    painted++
-                }
+            } else {
+                break
             }
         }
-        //right-to-left
-        if (x-1 >= 0 && board[x][y].background.constantState == board[x-1][y].background?.constantState) {
-            painted++
-            if (x-2 >= 0 && board[x][y].background.constantState == board[x-2][y].background?.constantState) {
+        for (i in 1..3) {
+            if (x-i >= 0 && board[x][y].background.constantState == board[x-i][y].background?.constantState) {
                 painted++
-                if (x-3 >= 0 && board[x][y].background.constantState == board[x-3][y].background?.constantState) {
-                    painted++
-                }
+            } else {
+                break
             }
         }
+
         if (painted > 2) {
             return true
         }
@@ -156,46 +151,33 @@ class NewGameActivity : AppCompatActivity() {
         var paintedTop = 0
         var paintedBottom = 0
 
-        //to-top-right
-        if (x+1 < columns.size && y+1 < rows && board[x][y].background.constantState == board[x+1][y+1].background?.constantState) {
-            paintedTop++
-            if (x+2 < columns.size && y+2 < rows && board[x][y].background.constantState == board[x+2][y+2].background?.constantState) {
+        for (i in 1..3) {
+            if (x+i < columns.size && y+i < rows && board[x][y].background.constantState == board[x+i][y+i].background?.constantState) {
                 paintedTop++
-                if (x+3 < columns.size && y+3 < rows && board[x][y].background.constantState == board[x+3][y+3].background?.constantState) {
-                    paintedTop++
-                }
+            } else {
+                break
             }
         }
-        //to-top-left
-        if (x-1 >= 0 && y+1 < rows && board[x][y].background.constantState == board[x-1][y+1].background?.constantState) {
-            paintedTop++
-            if (x-2 >= 0 && y+2 < rows && board[x][y].background.constantState == board[x-2][y+2].background?.constantState) {
+        for (i in 1..3) {
+            if (x-i >= 0 && y+i < rows && board[x][y].background.constantState == board[x-i][y+i].background?.constantState) {
                 paintedTop++
-                if (x-3 >= 0 && y+3 < rows && board[x][y].background.constantState == board[x-3][y+3].background?.constantState) {
-                    paintedTop++
-                }
+            } else {
+                break
             }
         }
-        //to-bottom-right
-        if (x+1 < columns.size && y-1 >= 0 && board[x][y].background.constantState == board[x+1][y-1].background?.constantState) {
-            paintedBottom++
-            if (x+2 < columns.size && y-2 >= 0 && board[x][y].background.constantState == board[x+2][y-2].background?.constantState) {
+        for (i in 1..3) {
+            if (x+i < columns.size && y-i >= 0 && board[x][y].background.constantState == board[x+i][y-i].background?.constantState) {
                 paintedBottom++
-                if (x+3 < columns.size && y-3 >= 0 && board[x][y].background.constantState == board[x+3][y-3].background?.constantState) {
-                    paintedBottom++
-                }
             }
         }
-        //to-bottom-left
-        if (x-1 >= 0 && y-1 >= 0 && board[x][y].background.constantState == board[x-1][y-1].background?.constantState) {
-            paintedBottom++
-            if (x-2 >= 0 && y-2 >= 0 && board[x][y].background.constantState == board[x-2][y-2].background?.constantState) {
+        for (i in 1..3) {
+            if (x-i >= 0 && y-i >= 0 && board[x][y].background.constantState == board[x-i][y-i].background?.constantState) {
                 paintedBottom++
-                if (x-3 >= 0 && y-3 >= 0 && board[x][y].background.constantState == board[x-3][y-3].background?.constantState) {
-                    paintedBottom++
-                }
+            } else {
+                break
             }
         }
+
         if (paintedTop > 2 || paintedBottom > 2) {
             return true
         }
