@@ -168,6 +168,8 @@ class NewGameActivity : AppCompatActivity() {
         for (i in 1..3) {
             if (x+i < columns.size && y-i >= 0 && board[x][y].background.constantState == board[x+i][y-i].background?.constantState) {
                 paintedBottom++
+            } else {
+                break
             }
         }
         for (i in 1..3) {
