@@ -34,8 +34,8 @@ class NewGameActivity : AppCompatActivity() {
         binding.btnReload.setOnClickListener { clearBoard() }
         binding.btnReset.setOnClickListener { resetGame() }
 
-        binding.redWins.setText(redNumWins.toString())
-        binding.purpleWins.setText(purpleNumWins.toString())
+        binding.redWins.text = redNumWins.toString()
+        binding.purpleWins.text = purpleNumWins.toString()
 
         setBoard()
         setColumns()
