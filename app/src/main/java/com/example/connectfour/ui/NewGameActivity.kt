@@ -21,8 +21,11 @@ class NewGameActivity : AppCompatActivity() {
     private var board: Array<Array<ImageView>> = arrayOf()
     private var turn = 0
     private val rows = 6
-    private var redNumWins = 0
-    private var purpleNumWins = 0
+
+    companion object {
+        var redNumWins = 0
+        var purpleNumWins = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
