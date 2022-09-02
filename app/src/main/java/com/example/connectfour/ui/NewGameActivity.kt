@@ -151,39 +151,39 @@ class NewGameActivity : AppCompatActivity() {
     }
 
     private fun checkDiagonal(x: Int, y: Int): Boolean {
-        var paintedTop = 0
-        var paintedBottom = 0
+        var paintedSame = 0
+        var paintedDiff = 0
 
         for (i in 1..3) {
             if (x+i < columns.size && y+i < rows && board[x][y].background.constantState == board[x+i][y+i].background?.constantState) {
-                paintedTop++
+                paintedSame++
             } else {
                 break
             }
         }
         for (i in 1..3) {
             if (x-i >= 0 && y+i < rows && board[x][y].background.constantState == board[x-i][y+i].background?.constantState) {
-                paintedTop++
+                paintedDiff++
             } else {
                 break
             }
         }
         for (i in 1..3) {
             if (x+i < columns.size && y-i >= 0 && board[x][y].background.constantState == board[x+i][y-i].background?.constantState) {
-                paintedBottom++
+                paintedDiff++
             } else {
                 break
             }
         }
         for (i in 1..3) {
             if (x-i >= 0 && y-i >= 0 && board[x][y].background.constantState == board[x-i][y-i].background?.constantState) {
-                paintedBottom++
+                paintedSame++
             } else {
                 break
             }
         }
 
-        if (paintedTop > 2 || paintedBottom > 2) {
+        if (paintedSame > 2 || paintedDiff > 2) {
             return true
         }
         return false
